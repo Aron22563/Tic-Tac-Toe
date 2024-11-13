@@ -1,19 +1,25 @@
 #include <ncurses.h> 
 int main(int argc, char ** argv){
 	initscr(); 
-	printw("hello world"); 
-	int x,y; 
-	x=y=10;
-	int c=getch();
-	if(c==97){
-		mvprintw(y,x,"%d",c);
+	//printw("Press ENTER, ARROW_UP, ARROW_DOWN, ARROW_RIGHT, ARROW_LEFT");
+	int c='a';
+	while(c!='q'){
+		c=getch();
+	switch(c){
+		case 'w': printw("Forward");
+			  break;
+		case 's': printw("Backward");
+			  break;  
+		case 'd': printw("Right");
+			  break; 
+		case 'a': printw("Left");
+			  break;
+		case 'q': endwin();
+			  break;
+	default: 
+		printw("no matching key found!");
+		break;
 	}
-	if(c==98){
-		mvprintw(y,x,"%d",c); 
 	}
-	if(c==10){
-		mvprintw(2,0, "hello world2");
-	}
-	getch(); 
 	endwin();
 }
